@@ -1,0 +1,14 @@
+<MemoryHierarchy>
+	<element type="main_memory">
+		<name>MainMemory</name>
+		<latency>200</latency>
+	</element>
+	<element type="cache">
+		<name>L1Cache</name>
+		<sets>128</sets>
+		<assoc>4</assoc>
+		<linesize>64</linesize>
+		<writepolicy>write_back</writepolicy>
+		<latency>1</latency>
+	</element>
+</MemoryHierarchy>

@@ -17,10 +17,10 @@ struct MemoryAccess {
 	AccessType type;
 };
 
-std::vector<MemoryAccess> generate_accesses_linear (const uint32_t n, const uint32_t buffer_size);
+std::vector<MemoryAccess> generate_accesses_linear (const uint32_t n, const uint32_t buffer_size, const uint32_t stride);
 
 // ----------------------------------------------------
 
-};
+}
 
 #endif

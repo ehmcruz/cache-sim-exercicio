@@ -35,6 +35,7 @@ Cache::Cache (const std::string_view name_, const uint32_t n_sets_, const uint32
 	  tag_bits{addr_bits - this->set_bits - this->line_bits}
 {
 	this->matrix = Mylib::Matrix<Slot, true>(this->n_sets, this->assoc);
+
 	std::cout << "created cache " << this->name
 		<< " size " << this->size()
 		<< " sets " << this->n_sets << " [set_bits " << this->set_bits << "]"
@@ -49,9 +50,19 @@ Cache::Cache (const std::string_view name_, const uint32_t n_sets_, const uint32
 void Cache::print_stats () const
 {
 	std::cout << "Statitics of " << this->name << std::endl;
+	
+	std::cout << this->name << ".size " << this->size() << std::endl;
+
 	std::cout << this->name << ".read_accesses " << this->stats_access_read << std::endl;
 	std::cout << this->name << ".write_accesses " << this->stats_access_write << std::endl;
+
+	const uint64_t total_accesses = this->stats_access_read + this->stats_access_write;
+	std::cout << this->name << ".total_accesses " << total_accesses << std::endl;
+
 	std::cout << this->name << ".misses " << this->stats_misses << std::endl;
+
+	const double miss_ratio = (static_cast<double>(this->stats_misses) / static_cast<double>(total_accesses));
+	std::cout << this->name << ".miss_ratio " << miss_ratio << std::endl;
 }
 
 // ----------------------------------------------------
@@ -78,6 +89,9 @@ void MainMemory::print_stats () const
 	std::cout << "Statitics of " << this->name << std::endl;
 	std::cout << this->name << ".read_accesses " << this->stats_access_read << std::endl;
 	std::cout << this->name << ".write_accesses " << this->stats_access_write << std::endl;
+
+	const uint64_t total_accesses = this->stats_access_read + this->stats_access_write;
+	std::cout << this->name << ".total_accesses " << total_accesses << std::endl;
 }
 
 // ----------------------------------------------------

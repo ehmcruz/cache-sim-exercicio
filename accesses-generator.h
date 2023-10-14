@@ -17,7 +17,9 @@ struct MemoryAccess {
 	AccessType type;
 };
 
-std::vector<MemoryAccess> generate_accesses_linear (const uint32_t n, const uint32_t buffer_size, const uint32_t stride);
+std::vector<MemoryAccess> generate_accesses_sequential (const uint32_t n, const uint32_t buffer_size, const uint32_t stride);
+
+std::vector<MemoryAccess> generate_accesses_random (const uint32_t n, const uint32_t buffer_size);
 
 // ----------------------------------------------------
 

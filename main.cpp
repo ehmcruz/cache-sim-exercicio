@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string_view>
+#include <iomanip>
 
 #include <cstdlib>
 
@@ -104,11 +105,6 @@ void create_hierarchy (const std::string_view fname)
 	}
 }
 
-void generate_accesses ()
-{
-	accesses = generate_accesses_linear(1000000, 64*1024, 4);
-}
-
 // ----------------------------------------------------
 
 Time get_current_time ()
@@ -123,6 +119,7 @@ void run ()
 		current_time += latency;
 	}
 
+	std::cout << "-------------------------------" << std::endl;
 	std::cout << "total time required (cycles): " << current_time << std::endl;
 }
 
@@ -138,15 +135,34 @@ void print_stats ()
 
 } // end namespace Sim
 
+static void help (const char *bin_name)
+{
+	std::cout << "Commands:" << std::endl;
+	std::cout << "    " << bin_name << " [xml_file] sequential [n] [buffer_size] [stride]" << std::endl;
+	std::cout << "    " << bin_name << " [xml_file] random [n] [buffer_size]" << std::endl;
+}
+
 int main (const int argc, const char **argv)
 {
-	if (argc != 2) {
-		std::cout << "Command: " << argv[0] << " [xml_file]" << std::endl;
+	std::cout << std::setprecision(4);
+	std::cout << std::fixed;
+
+	if (argc == 1) {
+		help(argv[0]);
+		exit(1);
+	}
+	else if (argc == 6 && std::string_view(argv[2]) == "sequential") {
+		Sim::accesses = Sim::generate_accesses_sequential(atoi(argv[3]), atoi(argv[4]), atoi(argv[5]));
+	}
+	else if (argc == 5 && std::string_view(argv[2]) == "random") {
+		Sim::accesses = Sim::generate_accesses_random(atoi(argv[3]), atoi(argv[4]));
+	}
+	else {
+		help(argv[0]);
 		exit(1);
 	}
 
 	Sim::create_hierarchy(argv[1]);
-	Sim::generate_accesses();
 	Sim::run();
 	Sim::print_stats();
 

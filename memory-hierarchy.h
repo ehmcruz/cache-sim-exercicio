@@ -7,6 +7,7 @@
 #include <cstdint>
 
 #include <my-lib/matrix.h>
+#include <my-lib/macros.h>
 
 namespace Sim
 {
@@ -39,9 +40,11 @@ public:
 		Cache
 	};
 protected:
-	const Type type;
+	OO_ENCAPSULATE_CONST_SCALAR_READONLY(Type, type)
+
 	const std::string name;
-	HierarchyElement *next_level = nullptr;
+
+	OO_ENCAPSULATE_PTR_INIT(HierarchyElement*, next_level, nullptr)
 
 public:
 	HierarchyElement (const Type type_, const std::string_view name_)
@@ -52,21 +55,6 @@ public:
 
 	virtual uint32_t access (const AccessType type, const Addr addr) = 0;
 	virtual void print_stats () const = 0;
-
-	Type get_type () const
-	{
-		return this->type;
-	}
-
-	void set_next_level (HierarchyElement *next_level)
-	{
-		this->next_level = next_level;
-	}
-
-	HierarchyElement* get_next_level () const
-	{
-		return this->next_level;
-	}
 };
 
 // ----------------------------------------------------
@@ -133,7 +121,7 @@ private:
 class MainMemory : public HierarchyElement
 {
 private:
-	uint32_t latency;
+	const uint32_t latency;
 
 	uint64_t stats_access_read = 0;
 	uint64_t stats_access_write = 0;

@@ -51,7 +51,7 @@ std::vector<MemoryAccess> generate_accesses_random (const uint32_t n, const uint
 	std::random_device rd;
 	std::mt19937 rg(rd());
 	std::uniform_int_distribution<uint32_t> distribution_type(0, 99);
-	std::uniform_int_distribution<uint32_t> distribution_addr(0, buffer_size);
+	std::uniform_int_distribution<uint32_t> distribution_addr(0, buffer_size-1);
 
 	std::vector<MemoryAccess> accesses;
 

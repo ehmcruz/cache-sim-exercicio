@@ -99,7 +99,6 @@ private:
 
 public:
 	Cache (const std::string_view name_, const uint32_t n_sets_, const uint32_t assoc_, const uint32_t line_size_, const uint32_t latency_, const WritePolicy write_policy_);
-	~Cache ();
 
 	uint32_t access (const AccessType type, const Addr addr) final override;
 	void print_stats () const final override;

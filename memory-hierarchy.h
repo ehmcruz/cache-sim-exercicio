@@ -40,7 +40,7 @@ public:
 		Cache
 	};
 protected:
-	OO_ENCAPSULATE_CONST_SCALAR_READONLY(Type, type)
+	OO_ENCAPSULATE_SCALAR_CONST_READONLY(Type, type)
 
 	const std::string name;
 

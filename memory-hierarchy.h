@@ -66,7 +66,7 @@ enum class WritePolicy : uint32_t {
 
 const char* WritePolicy_str (const WritePolicy value);
 
-enum class SlotState {
+enum class LineState {
 	Free,
 	Used,
 	Dirty
@@ -85,13 +85,13 @@ private:
 	const uint32_t line_bits;
 	const uint32_t tag_bits;
 
-	struct Slot {
+	struct Line {
 		Addr tag;
 		Time last_access_time;
-		SlotState state = SlotState::Free;
+		LineState state = LineState::Free;
 	};
 
-	Mylib::Matrix<Slot, true> matrix;
+	Mylib::Matrix<Line, true> matrix;
 
 	uint64_t stats_access_read = 0;
 	uint64_t stats_access_write = 0;

@@ -34,7 +34,7 @@ Cache::Cache (const std::string_view name_, const uint32_t n_sets_, const uint32
 	  line_bits{Mylib::Math::base2_log_of_integer(line_size_)},
 	  tag_bits{addr_bits - this->set_bits - this->line_bits}
 {
-	this->matrix = Mylib::Matrix<Slot, true>(this->n_sets, this->assoc);
+	this->matrix = Mylib::Matrix<Line, true>(this->n_sets, this->assoc);
 
 	std::cout << "created cache " << this->name
 		<< " size " << this->size()

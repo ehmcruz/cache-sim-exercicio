@@ -8,7 +8,7 @@
 		<sets>512</sets>
 		<assoc>4</assoc>
 		<linesize>64</linesize>
-		<writepolicy>write_back</writepolicy>
+		<writepolicy>write_through</writepolicy>
 		<latency>4</latency>
 	</element>
 	<element type="cache">

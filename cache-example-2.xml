@@ -8,7 +8,7 @@
 		<sets>512</sets>
 		<assoc>4</assoc>
 		<linesize>64</linesize>
-		<writepolicy>write_through</writepolicy>
+		<writepolicy>write_back</writepolicy>
 		<latency>4</latency>
 	</element>
 	<element type="cache">
@@ -16,7 +16,7 @@
 		<sets>32</sets>
 		<assoc>4</assoc>
 		<linesize>64</linesize>
-		<writepolicy>write_back</writepolicy>
+		<writepolicy>write_through</writepolicy>
 		<latency>1</latency>
 	</element>
 </MemoryHierarchy>

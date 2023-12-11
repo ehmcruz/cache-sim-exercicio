@@ -12,7 +12,7 @@ namespace Sim
 
 uint32_t Cache::access (const AccessType type, const Addr addr)
 {
-		if (type == AccessType::Read)
+	if (type == AccessType::Read)
 		this->stats_access_read++;
 	else
 		this->stats_access_write++;

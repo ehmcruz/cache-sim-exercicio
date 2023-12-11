@@ -1,7 +1,6 @@
 # Sobre
 
-Trabalho da disciplina de Arquitetura de Computadores sobre um simulador de memória cache.
-Completar o código no arquivo **cache.cpp**.
+Código usado na disciplina de Arquitetura de Computadores. É um simulador bem simples de memória cache.
 
 ---
 
